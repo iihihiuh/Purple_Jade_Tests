@@ -39,7 +39,36 @@ void Processor::load_program(string file, reg_t address) {
 			assert((uint64_t) start < (0x1 << (XLEN + 1)));
 			instr_mem[start] = inst;
 			start++;
-			inst_num++;
 		}
 	}
+}
+
+reg_t Processor::getReg(reg_t regnum) {
+	assert(regnum < REGMAX);
+
+	if (regnum < REGNUM) {
+		return regfile[regnum];
+	} 
+
+	if (regnum == 13) {  // stack pointer
+		return SP;
+	} else if (regnum == 14) { // link register
+		return LR;
+	}
+	return PC;  // PC
+}
+ 
+void Processor::setReg(reg_t regnum, reg_t val) {
+	assert(regnum < REGMAX);
+
+	if (regnum < REGNUM) {
+		regfile[regnum] = val;
+	} 
+
+	if (regnum == 13) {  // stack pointer
+		SP = val;
+	} else if (regnum == 14) { // link register
+		LR = val;
+	}
+	PC = val;  // PC
 }
