@@ -15,4 +15,4 @@ processor.o : processor.h processor.cc
 	$(CC) $(CFLG) -c processor.cc -o $@
 
 clean:
-	rm -rf *.o *~ *#
+	rm -rf *.o *~ *# spoke
