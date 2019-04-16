@@ -11,10 +11,10 @@ Processor::Processor() {
 	// addressable address space
 	instr_mem = (reg_t*) new char[0x1 << (XLEN + 1)];
 	data_mem =  new char[0x1 << (XLEN + 1)];
-	LR = 0;
-	SP = 0;
-	PC = 0;
+	LR = SP = PC = 0;
+	N = Z = V = C = false;
 	inst_num = 0;
+
 }
 
 Processor::~Processor() {

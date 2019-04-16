@@ -15,6 +15,8 @@ class Processor {
  public:
  	Processor();
  	~Processor();
+	// flags
+ 	bool N, Z, C, V;
 
  	reg_t getReg(reg_t);
  	void setReg(reg_t, reg_t);
