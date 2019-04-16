@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-typedef uint64_t Instr;
+typedef uint16_t Instr;
 
 #define INSTR_MATCH(name,mask,match) \
 	inline bool match_##name(Instr ins) { \
