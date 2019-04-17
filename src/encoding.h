@@ -3,7 +3,7 @@
 
 #include <cstdint>
 
-typedef uint64_t Instr;
+typedef uint16_t Instr;
 
 #define INSTR_MATCH(name,mask,match) \
 	inline bool match_##name(Instr ins) { \
@@ -29,6 +29,7 @@ INSTR_MATCH(ASRS,0xFFC0,0x4100)
 INSTR_MATCH(RORS,0xFFC0,0x41c0)
 INSTR_MATCH(ST,0xF800,0x6000)
 INSTR_MATCH(LD,0xF800,0x6800)
+INSTR_MATCH(B,0xF800,0xE000)
 INSTR_MATCH(BL,0xFFC0,0x4500)
 INSTR_MATCH(BX,0xFF87,0x4700)
 INSTR_MATCH(BCOND,0xF000,0xB000)
