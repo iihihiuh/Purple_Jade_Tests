@@ -135,6 +135,12 @@ void Processor::setMem(reg_t addr, reg_t val) {
  	log.N = N;
  }
 
+void Processor::start() {
+	while(1) {
+		step();
+	}
+}
+
  void Processor::step() {
  	Instr ins = instr_mem[PC];
  	log.pc = PC;
@@ -399,7 +405,8 @@ void Processor::setMem(reg_t addr, reg_t val) {
   		PC = (br_taken) ? pc_redirect : PC;
   		log_imm(imm8);
  	} else if (match_NOOP(ins)) {
- 		// do nothing
+ 		// exit program
+ 		exit(0);
  	} else {
  		// should not reach here expections
  		assert(false);
