@@ -259,6 +259,13 @@ void Processor::setMem(reg_t addr, reg_t val) {
  		reg_t rm_val = getReg(rm);
  		reg_t res = rd_val << rm_val;
 
+		//
+
+ 		C = ((rd_val << (rm_val - 1)) & 0x80) >> (XLEN - 1);
+ 		log.C = C;
+
+ 		//
+
 		setReg(rd, res);
  		setFlagNZ(res);
  	} else if (match_LSRS(ins)) {
@@ -267,6 +274,13 @@ void Processor::setMem(reg_t addr, reg_t val) {
  		reg_t rm = get_bits(ins, 3, 3);
  		reg_t rm_val = getReg(rm);
  		reg_t res = rd_val >> rm_val;
+
+ 		//
+
+ 		C = (rd_val >> (rm_val - 1)) & 0x1;
+ 		log.C = C;
+
+ 		//
 
 		setReg(rd, res);
  		setFlagNZ(res);
@@ -279,6 +293,13 @@ void Processor::setMem(reg_t addr, reg_t val) {
  		int16_t rd_sval = static_cast<int16_t>(rd_val);
  		rd_sval = rd_sval >> rm_val;
  		reg_t res = static_cast<reg_t>(rd_sval);
+
+		//
+
+ 		C = (rd_sval >> (rm_val - 1)) & 0x1;
+ 		log.C = C;
+
+ 		//
 
 		setReg(rd, res);
  		setFlagNZ(res);
@@ -293,6 +314,13 @@ void Processor::setMem(reg_t addr, reg_t val) {
  		hi = hi << (XLEN - rm_val);
  		reg_t lo = rd_val >> rm_val;
  		reg_t res = lo | hi;
+
+ 		//
+
+ 		C = res >> (XLEN - 1);
+ 		log.C = C;
+
+ 		//
 
 		setReg(rd, res);
  		setFlagNZ(res);
@@ -380,7 +408,6 @@ void Processor::setMem(reg_t addr, reg_t val) {
  	PC = PC + 1;
  }
 
-
 reg_t Processor::add(reg_t op1, reg_t op2) {
 	return add(op1, op2, true);
 }
@@ -388,6 +415,8 @@ reg_t Processor::add(reg_t op1, reg_t op2) {
 reg_t Processor::add(reg_t op1, reg_t op2, bool flag) {
 	uint32_t val1 = static_cast<uint32_t>(op1);
 	uint32_t val2 = static_cast<uint32_t>(op2);
+
+
 
 	uint32_t res = val1 + val2;
 	if (flag) {
