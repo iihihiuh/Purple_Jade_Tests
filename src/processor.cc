@@ -369,6 +369,7 @@ void Processor::setMem(reg_t addr, reg_t val) {
  					 && (cond == AL);
 
   		PC = (br_taken) ? pc_redirect : PC;
+  		log_imm(imm8);
  	} else if (match_NOOP(ins)) {
  		// do nothing
  	} else {
