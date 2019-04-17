@@ -55,7 +55,6 @@ class Processor {
  	reg_t getMem(reg_t addr);
  	void setMem(reg_t addr, reg_t val);
 
-
 private:
 	log_t log;
  	reg_t* regfile;
@@ -65,12 +64,20 @@ private:
  	uint64_t inst_num;
 
  	// private functions
- 	void log_imm(reg_t val) {
+ 	// set and log flags
+ 	void setFlagNZ(reg_t val);
 	// loging imm
+ 	void log_imm(reg_t val) {
  	log.imm_read = true;
  	log.imm_val = val;
 	}
-	
+
+	// adds and sub
+	reg_t add(reg_t, reg_t);
+	reg_t add(reg_t, reg_t, bool);
+	reg_t sub(reg_t, reg_t);
+	reg_t sub(reg_t, reg_t, bool);
+
 }; // class processor
 
 #endif
