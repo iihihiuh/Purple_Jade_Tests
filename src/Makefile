@@ -2,7 +2,7 @@ CC = g++
 CFLG = -std=c++11 -Wall -g
 OBJS = processor.o spoke.o
 TEST_FLD = ../tst
-HEADERs = util.h
+HEADERs = util.h encoding.h
 
 all: spoke
 

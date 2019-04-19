@@ -54,6 +54,8 @@ class Processor {
  	void step();
  	reg_t getMem(reg_t addr);
  	void setMem(reg_t addr, reg_t val);
+ 	void printLog();
+
 
 private:
 	log_t log;
