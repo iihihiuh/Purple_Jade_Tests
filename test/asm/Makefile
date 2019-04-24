@@ -2,7 +2,7 @@
 
 .PHONY: clean
 
-sources := test0.asm test1.asm test2.asm
+sources := test0.asm test1.asm test2.asm test3.asm
 objects := $(sources:%.asm=%.bin)
 
 all: $(objects)
