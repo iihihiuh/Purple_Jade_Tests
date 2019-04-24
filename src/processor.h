@@ -33,11 +33,6 @@ typedef struct {
 
 	bool imm_read;
 	reg_t imm_val;
-
-	bool N;
-	bool Z;
-	bool C;
-	bool V;
 } log_t;
 
 class Processor { 
@@ -70,8 +65,8 @@ private:
  	void setFlagNZ(reg_t val);
 	// loging imm
  	void log_imm(reg_t val) {
- 	log.imm_read = true;
- 	log.imm_val = val;
+ 		log.imm_read = true;
+ 		log.imm_val = val;
 	}
 
 	// adds and sub

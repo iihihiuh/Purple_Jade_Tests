@@ -1,7 +1,6 @@
 #include "processor.h"
 #include "encoding.h"
 #include "util.h"
-
 #include <cassert>
 #include <iostream>
 #include <fstream>
@@ -20,7 +19,6 @@ Processor::Processor() {
 
 	log.rs2_read = log.rs1_read = false;
 	log.rd_write = false;
-	log.N = log.Z = log.V = log.C = false;
 	log.mem_access = false;
 }
 
@@ -127,10 +125,8 @@ void Processor::setMem(reg_t addr, reg_t val) {
  	int16_t s16 = static_cast<int16_t>(val);
 
  	N = s16 < 0;
- 	log.N = N;
 
 	Z = val == (reg_t) 0;
- 	log.N = N;
  }
 
 void Processor::start() {
@@ -323,7 +319,6 @@ void Processor::printLog() {
 		//
 
  		C = ((rd_val << (rm_val - 1)) & 0x80) >> (XLEN - 1);
- 		log.C = C;
 
  		//
 
@@ -340,7 +335,6 @@ void Processor::printLog() {
  		//
 
  		C = (rd_val >> (rm_val - 1)) & 0x1;
- 		log.C = C;
 
  		//
 
@@ -359,7 +353,6 @@ void Processor::printLog() {
 		//
 
  		C = (rd_sval >> (rm_val - 1)) & 0x1;
- 		log.C = C;
 
  		//
 		setReg(rd, res);
@@ -380,7 +373,6 @@ void Processor::printLog() {
  		//
 
  		C = res >> (XLEN - 1);
- 		log.C = C;
 
  		//
 
@@ -493,10 +485,6 @@ reg_t Processor::add(reg_t op1, reg_t op2, bool flag) {
 		// flag setting
 		C = (res >> (XLEN - 1)) & 0x1;
 		V = ((res >> (XLEN - 2)) & 0x1) ^ C;
-
-		// loging
-		log.C = C;
-		log.V = V;
 	}
 	return res;
 }
