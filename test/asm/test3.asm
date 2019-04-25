@@ -1,149 +1,19 @@
 MOVS r7, 0
-MOVS r1, 8
-LSLS r7, r7, r1
-MOVS r1, 1
-ORRS r1, r7
-MOVS r7, 0
-MOVS r2, 8
-LSLS r7, r7, r2
-MOVS r2, 3
-ORRS r2, r7
-ANDS r1,  r2
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 8
-ORRS r6, r7
-CMP r6, r5
-MOVS r7, 0
-MOVS r1, 8
-LSLS r7, r7, r1
-MOVS r1, 1
-ORRS r1, r7
-MOVS r7, 0
-MOVS r2, 8
-LSLS r7, r7, r2
-MOVS r2, 3
-ORRS r2, r7
-ANDS r1,  r2
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 8
-ORRS r6, r7
-CMP r6, r1
-MOVS r7, 0
-MOVS r1, 8
-LSLS r7, r7, r1
-MOVS r1, 1
-ORRS r1, r7
-MOVS r7, 0
-MOVS r2, 8
-LSLS r7, r7, r2
-MOVS r2, 3
-ORRS r2, r7
-ANDS r1,  r2
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 8
-ORRS r6, r7
-CMP r6, r2
-MOVS r7, 0
-MOVS r1, 8
-LSLS r7, r7, r1
-MOVS r1, 1
-ORRS r1, r7
-ANDS r1,  r1
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 2
-ORRS r6, r7
-CMP r6, r5
-MOVS r4, 0
-BYPASS1: MOVS r7, 0
-MOVS r1, 8
-LSLS r7, r7, r1
-MOVS r1, 1
-ORRS r1, r7
-MOVS r7, 0
-MOVS r2, 8
-LSLS r7, r7, r2
-MOVS r2, 3
-ORRS r2, r7
-ANDS r1,  r2
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r3, r5, 0
-ADDS r4, r4, 1
+MOVS r0, 8
+LSLS r7, r7, r0
 MOVS r0, 2
-CMP r0, r4
-BNE BYPASS1
-NOOP
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 8
-ORRS r6, r7
-CMP r6, r3
-MOVS r4, 0
-BYPASS2: MOVS r7, 0
-MOVS r1, 8
-LSLS r7, r7, r1
-MOVS r1, 1
-ORRS r1, r7
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-MOVS r7, 0
-MOVS r2, 8
-LSLS r7, r7, r2
-MOVS r2, 3
-ORRS r2, r7
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ANDS r1,  r2
-ADDS r4, r4, 1
-MOVS r0, 2
-CMP r0, r4
-BNE BYPASS2
-NOOP
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 8
-ORRS r6, r7
-CMP r6, r5
-MOVS r4, 0
-BYPASS3: MOVS r7, 0
-MOVS r2, 8
-LSLS r7, r7, r2
-MOVS r2, 3
-ORRS r2, r7
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r7, r7, 0
+ORRS r0, r7
 MOVS r7, 0
 MOVS r1, 8
 LSLS r7, r7, r1
-MOVS r1, 1
+MOVS r1, 2
 ORRS r1, r7
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ADDS r7, r7, 0
-ANDS r1,  r2
-ADDS r4, r4, 1
-MOVS r0, 2
-CMP r0, r4
-BNE BYPASS3
+CMP r0, r1
 NOOP
-MOVS r7, 0
-MOVS r6, 8
-LSLS r7, r7, r6
-MOVS r6, 8
-ORRS r6, r7
-CMP r6, r5
+NOOP
+NOOP
+NOOP
+BEQ BYPASS1
+NOOP
+DEAD1: B DEAD1
+BYPASS1: NOOP
