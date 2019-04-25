@@ -1,14 +1,17 @@
 CC = g++
 CFLG = -std=c++11 -Wall -g
-OBJS =
 MAINHEADERs = test_funcs.h
-MAINFILE = igen.cc
 RM = rm -rf
+SOURCES := $(shell ls *.cc)
+OBJECTS := $(SOURCES:%.cc=%.asm)
+FLD = ../asm/
+JUNK = *.elf *.dSYM *.asm
 
-all : igen
+all : $(OBJECTS)
 
-igen : $(MAINFILE) $(MAINHEADERs)
-	$(CC) $(CFLG) $(MAINFILE) -o $@
+%.asm : %.cc $(MAINHEADERs)
+	$(CC) $(CFLG) $< -o $*.elf
+	./$*.elf > $(FLD)$@
 
 clean:
-	$(RM) igen igen.dSYM
+	$(RM) $(JUNK)
