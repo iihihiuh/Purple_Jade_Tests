@@ -3,15 +3,15 @@ CFLG = -std=c++11 -Wall -g
 MAINHEADERs = test_funcs.h
 RM = rm -rf
 SOURCES := $(shell ls *.cc)
-OBJECTS := $(SOURCES:%.cc=%.asm)
 FLD = ../asm/
+OBJECTS := $(SOURCES:%.cc=$(FLD)%.asm)
 JUNK = *.elf *.dSYM *.asm
 
 all : $(OBJECTS)
 
 %.asm : %.cc $(MAINHEADERs)
 	$(CC) $(CFLG) $< -o $*.elf
-	./$*.elf > $(FLD)$@
+	./$*.elf > $@
 
 clean:
 	$(RM) $(JUNK)
