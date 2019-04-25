@@ -9,7 +9,7 @@ JUNK = *.elf *.dSYM *.asm
 
 all : $(OBJECTS)
 
-%.asm : %.cc $(MAINHEADERs)
+$(FLD)%.asm : %.cc $(MAINHEADERs)
 	$(CC) $(CFLG) $< -o $*.elf
 	./$*.elf > $@
 
