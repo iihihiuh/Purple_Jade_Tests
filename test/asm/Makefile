@@ -11,4 +11,4 @@ all: $(objects)
 	python assemble.py $< > $@
 
 clean:
-	-rm -rf *.bin
+	-rm -rf *.bin test_*.asm
