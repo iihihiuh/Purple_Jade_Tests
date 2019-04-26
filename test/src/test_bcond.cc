@@ -2,9 +2,6 @@
 
 int main(int argc, char** argv) {
 	// arithmetic
-	li(1,0x7fff);
-	li(2,0xffff);
-	cout << "CMP r1, r2" << endl;
 	// taken
 	test_bcond_taken(1, 0, "EQ", 2, 2);
 	test_bcond_taken(2, 0, "NE", 1, 2);
