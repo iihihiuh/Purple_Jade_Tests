@@ -34,9 +34,15 @@ int main(int argc, char** argv) {
 	test_rr_rs12_bypass(4, 0, 0, "ADDS", 24, 13, 11);
 	test_rr_rs12_bypass(5, 0, 1, "ADDS", 25, 14, 11);
 	test_rr_rs12_bypass(6, 0, 2, "ADDS", 26, 15, 11);
+	test_rr_rs12_bypass(7, 1, 0, "ADDS", 24, 13, 11);
+	test_rr_rs12_bypass(8, 1, 1, "ADDS", 26, 15, 11);
+	test_rr_rs12_bypass(9, 2, 0, "ADDS", 27, 13, 14);
 
-	test_rr_rs21_bypass(7, 1, 0, "ADDS", 24, 13, 11);
-	test_rr_rs21_bypass(8, 1, 1, "ADDS", 24, 13, 11);
-	test_rr_rs21_bypass(9, 2, 0,"ADDS", 24, 13, 11);
+	test_rr_rs21_bypass(10, 0, 0, "ADDS", 24, 13, 11);
+	test_rr_rs21_bypass(11, 0, 1, "ADDS", 25, 14, 11);
+	test_rr_rs21_bypass(12, 0, 2, "ADDS", 26, 15, 11);
+	test_rr_rs21_bypass(13, 1, 0, "ADDS", 24, 13, 11);
+	test_rr_rs21_bypass(14, 1, 1, "ADDS", 26, 15, 11);
+	test_rr_rs21_bypass(15, 2, 0, "ADDS", 27, 13, 14);
 	return 0;
 }

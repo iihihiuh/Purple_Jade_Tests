@@ -43,7 +43,7 @@ void test_rr_op(string inst, reg_t res, reg_t val1, reg_t val2,
 	li(1, val1, s);
 	li(2, val2, s);
 	s << inst << ((is_shift | is_logic)? " r1, " : " r5, ") << ((is_logic) ? "" :  " r1,") << " r2" << endl;
-	test_cmp(5 , res, s);
+	test_cmp(((is_shift | is_logic)? 1 : 5), res, s);
 }
 
 // eq scr dest
@@ -52,7 +52,7 @@ void test_rr_rs1_eq_dest(string inst, reg_t res, reg_t val1, reg_t val2,
 	li(1, val1, s);
 	li(2, val2, s);
 	s << inst << ((is_shift | is_logic)? " r1, " : " r1, ") << ((is_logic) ? "" :  " r1,") << " r2" << endl;
-	test_cmp(1 , res, s);
+	test_cmp(1, res, s);
 }
 
 void test_rr_rs2_eq_dest(string inst, reg_t res, reg_t val1, reg_t val2,
@@ -60,14 +60,14 @@ void test_rr_rs2_eq_dest(string inst, reg_t res, reg_t val1, reg_t val2,
 	li(1, val1, s);
 	li(2, val2, s);
 	s << inst << ((is_shift | is_logic)? " r1, " : " r2, ") << ((is_logic) ? "" :  " r1,") << " r2" << endl;
-	test_cmp(2 , res, s);
+	test_cmp(((is_shift | is_logic)? 1 : 2), res, s);
 }
 
 void test_rr_rs1_eq_rs2(string inst, reg_t res, reg_t val1,
 	bool is_shift=false, bool is_logic=false, ostream& s=cout) {
 	li(1, val1, s);
 	s << inst << ((is_shift | is_logic)? " r1, " : " r5,") << ((is_logic) ? "" :  " r1,") << " r1" << endl;
-	test_cmp(5 , res, s);
+	test_cmp(((is_shift | is_logic)? 1 : 5), res, s);
 }
 
 void test_rr_dest_bypass(int num, int cycles, string inst, reg_t res, reg_t val1, reg_t val2,
@@ -76,9 +76,9 @@ void test_rr_dest_bypass(int num, int cycles, string inst, reg_t res, reg_t val1
 	s << "BYPASS" << num << ": ";
 	li(1, val1, s);
 	li(2, val2, s);
-	s << inst << ((is_shift | is_logic)? " r1, " : " r5,") << ((is_logic) ? "" :  " r1,") << " r2" << endl;
+	s << inst << ((is_shift | is_logic)? " r1," : " r5,") << ((is_logic) ? "" :  " r1,") << " r2" << endl;
 	test_insert_nops(cycles, s);
-	s << "ADDS r3, r5, 0" << endl;
+	s << "ADDS r3," << ((is_shift | is_logic)? " r1," : " r5,") <<" 0" << endl;
 	s << "ADDS r4, r4, 1" << endl;
 	s << "MOVS r0, 2" << endl;
 	s << "CMP r0, r4" << endl;
@@ -101,7 +101,7 @@ void test_rr_rs12_bypass(int num, int rs1_cycles, int rs2_cycles, string inst, r
 	s << "CMP r0, r4" << endl;
 	s << "BNE BYPASS" << num << endl;
 	s << "NOOP" << endl;
-	test_cmp(5 , res, s);
+	test_cmp(((is_shift | is_logic)? 1 : 5), res, s);
 }
 
 void test_rr_rs21_bypass(int num, int rs1_cycles, int rs2_cycles, string inst, reg_t res, reg_t val1, reg_t val2,
@@ -118,7 +118,7 @@ void test_rr_rs21_bypass(int num, int rs1_cycles, int rs2_cycles, string inst, r
 	s << "CMP r0, r4" << endl;
 	s << "BNE BYPASS" << num << endl;
 	s << "NOOP" << endl;
-	test_cmp(5 , res, s);
+	test_cmp(((is_shift | is_logic)? 1 : 5), res, s);
 }
 
 void test_ld_st_op(reg_t res, reg_t base, int cycles, reg_t offset, ostream& s=cout) {
