@@ -1,7 +1,7 @@
 #include "test_funcs.h"
 
 uint16_t mvns(uint16_t val1, uint16_t val2) {
-	return  ~val2;
+	return ~val2;
 }
 
 int main(int argc, char** argv) {

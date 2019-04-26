@@ -7,6 +7,8 @@
 
 using namespace std;
 
+#define XLEN 16
+
 typedef uint16_t reg_t;
 
 #define t0 7  // reserve register 0 as temporary register
