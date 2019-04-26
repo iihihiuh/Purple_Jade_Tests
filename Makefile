@@ -1,5 +1,5 @@
 TEST_TOP = $(shell pwd)
-SPOKE_DIR = $(TEST_TOP)/src
+SPOKE_DIR = $(TEST_TOP)/spoke
 ASM_DIR =  $(TEST_TOP)/test/asm
 ASM_SRC_DIR =  $(TEST_TOP)/test/src
 BIN_DIR = $(TEST_TOP)/test/bin
