@@ -123,7 +123,7 @@ void test_rr_rs21_bypass(int num, int rs1_cycles, int rs2_cycles, string inst, r
 	test_cmp(((is_shift | is_logic)? 1 : 5), res, s);
 }
 
-void test_ld_st_op(reg_t res, reg_t base, int cycles, reg_t offset, ostream& s=cout) {
+void test_ld_st_op(reg_t res, int cycles, reg_t base, reg_t offset, ostream& s=cout) {
 	li(0, base, s); // loading base
 	li(1, res, s);
 	s << "STR r1, [r0, " << offset << "]" << endl;
@@ -132,7 +132,7 @@ void test_ld_st_op(reg_t res, reg_t base, int cycles, reg_t offset, ostream& s=c
 	test_cmp(5 , res, s);
 }
 
-void test_ld_st_bypass(int num, int rs1_cycles, int dest_cycles, reg_t res, reg_t base, int cycles, reg_t offset, bool st, ostream& s=cout) {
+void test_ld_st_bypass(int num, int rs1_cycles, int dest_cycles, reg_t res, int cycles, reg_t base, reg_t offset, bool st, ostream& s=cout) {
 	s << "MOVS r4, 0" << endl;
 	s << "BYPASS" << num << ": ";
 	// st and ld
