@@ -2,7 +2,7 @@
 
 .PHONY: clean
 
-sources := test0.asm test1.asm test2.asm
+sources := $(shell ls *.asm)
 objects := $(sources:%.asm=%.bin)
 
 all: $(objects)
@@ -11,4 +11,4 @@ all: $(objects)
 	python assemble.py $< > $@
 
 clean:
-	-rm -rf *.bin
+	-rm -rf *.bin test_*.asm

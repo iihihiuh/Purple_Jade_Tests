@@ -22,4 +22,4 @@ B END           // 23 -> PC
 NOOP            // ..
 SKIP: RORS R4, R4, R2 // 0x2000 -> R4
 BX R14          // 16 -> PC
-END: NOOP       // ..
+END: NOOP     // ..
