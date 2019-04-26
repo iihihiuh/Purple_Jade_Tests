@@ -17,4 +17,4 @@ clean:
 	make -C $(SPOKE_DIR) clean
 	make -C $(ASM_SRC_DIR) clean
 	make -C $(ASM_DIR) clean
-	rm -rf $(BIN_DIR)
+	rm -rf $(BIN_DIR) *~
