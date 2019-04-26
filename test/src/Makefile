@@ -12,6 +12,7 @@ all : $(OBJECTS)
 $(FLD)%.asm : %.cc $(MAINHEADERs)
 	$(CC) $(CFLG) $< -o $*.elf
 	./$*.elf > $@
+	$(RM) $*.elf $*.elf.dSYM
 
 clean:
 	$(RM) $(JUNK)
