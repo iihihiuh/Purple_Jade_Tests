@@ -85,7 +85,5 @@ int main(int argc, char** argv) {
 	test_bcond_not_taken(435, 14, "CS", 1, 0);
 	test_bcond_not_taken(436, 15, "VC", 0x7fff, 0xffff);
 	test_bcond_not_taken(437, 16, "VS", 4, 1);
-
-
 	return 0;
 }
