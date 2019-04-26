@@ -160,25 +160,26 @@ void test_ld_st_bypass(int num, int rs1_cycles, int dest_cycles, reg_t res, int 
 	test_cmp(3 , res, s);
 }
 
-void test_rimm_op(reg_t res, string inst, reg_t val1, reg_t imm, bool is_sp=false, ostream& s=cout) {
+void test_rimm_op(string inst, reg_t res, reg_t val1, reg_t imm, bool is_sp=false, ostream& s=cout) {
 	li(1, val1, s);
-	s << inst << ((is_sp)? " SP," : " r5, ") << ((is_sp) ? " SP," :  " r1, ") << imm << endl;
-	test_cmp(5 , res, s);
+	s << inst << ((is_sp)? " SP," : " r5, ") << ((is_sp) ? " SP, " :  " r1, ") << imm << endl;
+	if (!is_sp)
+		test_cmp(5 , res, s);
 }
 
-void test_rimm_eq_dst(reg_t res, string inst, reg_t val1, reg_t imm, bool is_sp=false, ostream& s=cout) {
+void test_rimm_eq_dst(string inst, reg_t res, reg_t val1, reg_t imm, bool is_sp=false, ostream& s=cout) {
 	li(5, val1, s);
 	s << inst << ((is_sp)? " SP," : " r5, ") << ((is_sp) ? " SP, " :  " r5, ") << imm << endl;
 	test_cmp(5 , res, s);
 }
 
-void test_rimm_bypass(int num, int rs1_cycles, int dest_cycles, reg_t res, string inst,
+void test_rimm_bypass(int num, int rs1_cycles, int dest_cycles, string inst, reg_t res,
 	reg_t val1, reg_t imm, bool is_sp=false, ostream& s=cout) {
 	s << "MOVS r4, 0" << endl;
 	s << "BYPASS" << num << ": ";
 	li(1, val1, s);
 	test_insert_nops(rs1_cycles, s);
-	s << inst << ((is_sp)? " SP," : " r5, ") << ((is_sp) ? " SP," :  " r1, ") << imm << endl;
+	s << inst << ((is_sp)? " SP," : " r5, ") << ((is_sp) ? " SP, " :  " r1, ") << imm << endl;
 	test_insert_nops(dest_cycles, s);
 	s << "ADDS r3, r5, 0" << endl;
 	s << "ADDS r4, r4, 1" << endl;
