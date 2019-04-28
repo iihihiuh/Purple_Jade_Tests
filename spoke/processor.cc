@@ -177,54 +177,57 @@ void Processor::printLog() {
 }
 
 void Processor::printTrace() {
-	cerr << setw(4) << setfill('0') << log.pc;
+	cerr << setw(4) << setfill('0') << hex << log.pc;
+
 	if (log.rd_write) {
-		cerr << setw(1) << 1;
-		cerr << setw(4) << setfill('0') << log.rd;
-		cerr << setw(4) << setfill('0') << log.rd_val;
+		cerr << setw(1) << hex << 1;
+		cerr << setw(4) << setfill('0') << hex << log.rd;
+		cerr << setw(4) << setfill('0') << hex << log.rd_val;
 	} else {
-		cerr << setw(1) << 0;
-		cerr << setw(4) << setfill('0') << 0;
-		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(1) << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
 	}
+
 	if (log.rs1_read) {
-		cerr << setw(1) << 1;
-		cerr << setw(4) << setfill('0') << log.rs1;
-		cerr << setw(4) << setfill('0') << log.rs1_val;
+		cerr << setw(1) << hex << 1;
+		cerr << setw(4) << setfill('0') << hex << log.rs1;
+		cerr << setw(4) << setfill('0') << hex << log.rs1_val;
 	} else {
-		cerr << setw(1) << 0;
-		cerr << setw(4) << setfill('0') << 0;
-		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(1) << hex << 0;
+		cerr << setw(4) << setfill('0') << hex <<0;
+		cerr << setw(4) << setfill('0') << hex << 0;
 	}
+
 	if (log.rs2_read) {
-		cerr << setw(1) << 1;
-		cerr << setw(4) << setfill('0') << log.rs2;
-		cerr << setw(4) << setfill('0') << log.rs2_val;
+		cerr << setw(1) << hex << 1;
+		cerr << setw(4) << setfill('0') << hex << log.rs2;
+		cerr << setw(4) << setfill('0') << hex << log.rs2_val;
 	} else {
-		cerr << setw(1) << 0;
-		cerr << setw(4) << setfill('0') << 0;
-		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(1) << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
 	}
+
 	if (log.imm_read) {
-		cerr << setw(1) << 1;
-		cerr << setw(4) << setfill('0') << log.imm_val;
+		cerr << setw(1) << hex << 1;
+		cerr << setw(4) << setfill('0') << hex << log.imm_val;
 	} else {
-		cerr << setw(1) << 0;
-		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(1) << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
 	}
 
 	if (log.mem_access) {
-		cerr << setw(1) << 1;
-		cerr << setw(1) << log.lors;
-		cerr << setw(4) << setfill('0') << log.addr;
-		cerr << setw(4) << setfill('0') << log.mem_val;
+		cerr << setw(1) << hex << 1;
+		cerr << setw(1) << hex << log.lors;
+		cerr << setw(4) << setfill('0') << hex << log.addr;
+		cerr << setw(4) << setfill('0') << hex << log.mem_val;
 	} else {
-		cerr << setw(1) << 0;
-		cerr << setw(1) << 0;
-		cerr << setw(4) << setfill('0') << 0;
-		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(1) << hex << 0;
+		cerr << setw(1) << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
+		cerr << setw(4) << setfill('0') << hex << 0;
 	}
-
 	cerr << setw(1) << ((Z) ? "1" : "0");
 	cerr << setw(1) << ((N) ? "1" : "0");
 	cerr << setw(1) << ((V) ? "1" : "0");
