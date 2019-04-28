@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <iomanip>
 
 using namespace std;
 
@@ -129,9 +130,9 @@ void Processor::setMem(reg_t addr, reg_t val) {
 	Z = val == (reg_t) 0;
  }
 
-void Processor::start() {
+void Processor::start(bool trace) {
 	while(1) {
-		step();
+		step(trace);
 	}
 }
 
@@ -175,7 +176,62 @@ void Processor::printLog() {
 	cout << ((C) ? "1" : "0") << endl;
 }
 
- void Processor::step() {
+void Processor::printTrace() {
+	cerr << setw(4) << setfill('0') << log.pc;
+	if (log.rd_write) {
+		cerr << setw(1) << 1;
+		cerr << setw(4) << setfill('0') << log.rd;
+		cerr << setw(4) << setfill('0') << log.rd_val;
+	} else {
+		cerr << setw(1) << 0;
+		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(4) << setfill('0') << 0;
+	}
+	if (log.rs1_read) {
+		cerr << setw(1) << 1;
+		cerr << setw(4) << setfill('0') << log.rs1;
+		cerr << setw(4) << setfill('0') << log.rs1_val;
+	} else {
+		cerr << setw(1) << 0;
+		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(4) << setfill('0') << 0;
+	}
+	if (log.rs2_read) {
+		cerr << setw(1) << 1;
+		cerr << setw(4) << setfill('0') << log.rs2;
+		cerr << setw(4) << setfill('0') << log.rs2_val;
+	} else {
+		cerr << setw(1) << 0;
+		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(4) << setfill('0') << 0;
+	}
+	if (log.imm_read) {
+		cerr << setw(1) << 1;
+		cerr << setw(4) << setfill('0') << log.imm_val;
+	} else {
+		cerr << setw(1) << 0;
+		cerr << setw(4) << setfill('0') << 0;
+	}
+
+	if (log.mem_access) {
+		cerr << setw(1) << 1;
+		cerr << setw(1) << log.lors;
+		cerr << setw(4) << setfill('0') << log.addr;
+		cerr << setw(4) << setfill('0') << log.mem_val;
+	} else {
+		cerr << setw(1) << 0;
+		cerr << setw(1) << 0;
+		cerr << setw(4) << setfill('0') << 0;
+		cerr << setw(4) << setfill('0') << 0;
+	}
+
+	cerr << setw(1) << ((Z) ? "1" : "0");
+	cerr << setw(1) << ((N) ? "1" : "0");
+	cerr << setw(1) << ((V) ? "1" : "0");
+	cerr << setw(1) << ((C) ? "1" : "0") << endl;
+}
+
+ void Processor::step(bool trace) {
  	Instr ins = instr_mem[PC];
  	log.pc = PC;
  	cout << "Instr ";
@@ -485,6 +541,8 @@ void Processor::printLog() {
  		exit(1);
  	}
  	PC = PC + 1;
+ 	if (trace)
+ 		printTrace();
  	printLog();
  }
 

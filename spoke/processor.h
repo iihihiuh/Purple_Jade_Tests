@@ -45,8 +45,8 @@ class Processor {
  	reg_t getReg(reg_t);
  	void setReg(reg_t, reg_t);
  	void load_program(std::string, reg_t);
- 	void start();
- 	void step();
+ 	void start(bool);
+ 	void step(bool);
  	reg_t getMem(reg_t addr);
  	void setMem(reg_t addr, reg_t val);
  	void printLog();
@@ -74,7 +74,7 @@ private:
 	reg_t add(reg_t, reg_t, bool);
 	reg_t sub(reg_t, reg_t);
 	reg_t sub(reg_t, reg_t, bool);
-
+	void printTrace();
 }; // class processor
 
 #endif
