@@ -258,6 +258,12 @@ def read_instruction(string):
     # RORS Rd, Rd, Rm
     elif instruction == 'RORS':
         make_rdrnrm_instruction(0b0100000111, out16, split, string)
+    # MULU Rd, Rd, Rm
+    elif instruction == 'MULU':
+        make_rdrnrm_instruction(0b0100000101, out16, split, string)
+    # DIVU Rd, Rd, Rm
+    elif instruction == 'DIVU':
+        make_rdrnrm_instruction(0b0100000110, out16, split, string)
     # STR Rd, [Rn, #<imm5>]
     elif instruction == 'STR':
         make_imm5_instruction(0b01100, out16, split, string)

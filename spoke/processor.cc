@@ -390,6 +390,22 @@ void Processor::printLog() {
 
  		setMem(addr, rd_val);
  		log_imm(imm5);
+ 	} else if (match_MULU(ins)) {
+ 		cout << "MULU" << endl;
+ 		reg_t rd = get_bits(ins, 0, 3);
+ 		reg_t rd_val = getReg(rd);
+ 		reg_t rm = get_bits(ins, 3, 3);
+ 		reg_t rm_val = getReg(rm);
+ 		reg_t res = rd_val * rm_val;
+		setReg(rd, res);
+ 	} else if (match_DIVU(ins)) {
+ 		cout << "DIVU" << endl;
+ 		reg_t rd = get_bits(ins, 0, 3);
+ 		reg_t rd_val = getReg(rd);
+ 		reg_t rm = get_bits(ins, 3, 3);
+ 		reg_t rm_val = getReg(rm);
+ 		reg_t res = rd_val / rm_val;
+		setReg(rd, res);
  	} else if (match_LD(ins)) {
  		cout << "LD" << endl;
  		reg_t rd = get_bits(ins, 0, 3);
