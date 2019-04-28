@@ -14,6 +14,8 @@ MVNS R5, R0     // 0xFFFF -> R5
 LSLS R1, R1, R5 // 0x8000 -> R1
 LSRS R4, R4, R6 // 0x0001 -> R4
 ASRS R5, R5, R3 // 0xFFFF -> R5
+DIVU R5, R5, R3
+MULU R5, R5, R3
 BL SKIP         // 20 -> PC, 16 -> LR
 NOOP            // ...
 STR R4, [R0, 9] // 0x0001 -> Mem[9]
