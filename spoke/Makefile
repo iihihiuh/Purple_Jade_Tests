@@ -8,7 +8,7 @@ all: spoke
 spoke: $(OBJS)
 	$(CC) $(CFLG) $(OBJS) -o $@
 
-spke.o: encoding.h spoke.cc processor.h
+spoke.o: encoding.h spoke.cc processor.h
 	$(CC) $(CFLG) -c spoke.cc -o $@
 
 processor.o : processor.h processor.cc $(HEADERs)
