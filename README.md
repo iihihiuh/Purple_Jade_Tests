@@ -25,5 +25,7 @@
 ##### Trace Decomposition
 ###### format break down
 ###### Numbers are all in hex
-|PC|write to register ?| rd address| rd value | read rs1 ?| rs1 address | rs1 value | read rs2 ? | rs2 address | rs2 value | read imm ? | imm val | mem access ? | load or store ? | mem address| mem value| flags|
-|4bits|1 bit|4 bits| 4 bits| 1 bit | 4 bits | 4 bits | 1 bit | 4 bits | 4 bits| 1 bit | 4 bits | 1 bit | 1 bit | 4 bits | 4 bits |
+PC|write to register ?| rd address| rd value | read rs1 ?| rs1 address | rs1 value | read rs2 ? | rs2 address | rs2 value | read imm ? | imm val | mem access ? | load or store ? | mem address| mem value|flags
+
+---|---| ---| --- | --- | --- | --- | --- | --- | ---| --- | ---| --- | --- |---| ---|---
+4bits|1 bit|4 bits| 4 bits| 1 bit | 4 bits | 4 bits | 1 bit | 4 bits | 4 bits| 1 bit | 4 bits | 1 bit | 1 bit | 4 bits | 4 bits | 4 bits
