@@ -17,6 +17,7 @@
 ```
 ##### Options:
 `-t` enable `spoke` to print traces to standard error
+
 `-d` enable `spoke` to print human readable traces to standard output
 ##### example
 ```
