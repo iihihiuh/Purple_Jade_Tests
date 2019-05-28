@@ -188,7 +188,7 @@ void Processor::printTrace() {
 		cerr << setw(4) << setfill('0') << hex << 0;
 		cerr << setw(4) << setfill('0') << hex << 0;
 	}
-
+	/*
 	if (log.rs1_read) {
 		cerr << setw(1) << hex << 1;
 		cerr << setw(4) << setfill('0') << hex << log.rs1;
@@ -216,14 +216,12 @@ void Processor::printTrace() {
 		cerr << setw(1) << hex << 0;
 		cerr << setw(4) << setfill('0') << hex << 0;
 	}
-
+	*/
 	if (log.mem_access) {
-		cerr << setw(1) << hex << 1;
-		cerr << setw(1) << hex << log.lors;
+		cerr << setw(1) << hex << !log.lors;
 		cerr << setw(4) << setfill('0') << hex << log.addr;
 		cerr << setw(4) << setfill('0') << hex << log.mem_val;
 	} else {
-		cerr << setw(1) << hex << 0;
 		cerr << setw(1) << hex << 0;
 		cerr << setw(4) << setfill('0') << hex << 0;
 		cerr << setw(4) << setfill('0') << hex << 0;
