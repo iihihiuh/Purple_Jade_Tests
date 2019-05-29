@@ -169,11 +169,11 @@ void Processor::printLog() {
 		cout << "address " << log.addr << " val " << log.mem_val << endl;
 	}
 
-	cout << "ZNVC ";
-	cout << ((Z) ? "1" : "0");
+	cout << "CNZV ";
+	cout << ((C) ? "1" : "0");
 	cout << ((N) ? "1" : "0");
-	cout << ((V) ? "1" : "0");
-	cout << ((C) ? "1" : "0") << endl;
+	cout << ((Z) ? "1" : "0");
+	cout << ((V) ? "1" : "0") << endl;
 }
 
 void Processor::printTrace() {
@@ -226,10 +226,17 @@ void Processor::printTrace() {
 		cerr << setw(4) << setfill('0') << hex << 0;
 		cerr << setw(4) << setfill('0') << hex << 0;
 	}
-	cerr << setw(1) << ((Z) ? "1" : "0");
-	cerr << setw(1) << ((N) ? "1" : "0");
-	cerr << setw(1) << ((V) ? "1" : "0");
-	cerr << setw(1) << ((C) ? "1" : "0") << endl;
+	uint32_t f = 0;
+	if (C)
+		f |= (0x1 << 3);
+	if (N)
+		f |= (0x1 << 2);
+	if (Z)
+		f |= (0x1 << 1);
+	if (V)
+		f |= 0x1;
+	cerr << setw(1) << f << endl;
+
 }
 
  void Processor::step(bool trace) {
