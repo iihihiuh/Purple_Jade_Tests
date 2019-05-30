@@ -490,7 +490,7 @@ void Processor::printTrace() {
   		imm = imm >> (XLEN - 11); // sign extension
   		imm11 = static_cast<reg_t>(imm);
 
-  		PC = PC + imm11;
+  		PC = PC + imm11 - 1;
   		log_imm(imm11);
  	} else if (match_BL(ins)) {
  		cout << "BL" << endl;
@@ -502,7 +502,7 @@ void Processor::printTrace() {
   		imm6 = static_cast<reg_t>(imm);
   		
   		setReg(14, PC + 2);
-  		PC = PC + imm6;
+  		PC = PC + imm6 - 1;
   		log_imm(imm6);
  	} else if (match_BX(ins)) {
  		cout << "BX" << endl;
@@ -519,7 +519,7 @@ void Processor::printTrace() {
   		imm = imm << (XLEN - 8);
   		imm = imm >> (XLEN - 8); // sign extension
   		imm8 = static_cast<reg_t>(imm);	
-  		reg_t pc_redirect = PC + imm8;
+  		reg_t pc_redirect = PC + imm8 - 1;
 
   		bool br_taken = (cond == EQ && Z)
  					 || (cond == NE && !Z)

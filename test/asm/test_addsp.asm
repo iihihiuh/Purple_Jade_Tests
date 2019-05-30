@@ -1,0 +1,48 @@
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 0
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 1
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 2
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 3
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 4
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 5
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 6
+MOVS r7, 0
+MOVS r1, 8
+LSLS r7, r7, r1
+MOVS r1, 0
+ORRS r1, r7
+ADD SP, SP, 7

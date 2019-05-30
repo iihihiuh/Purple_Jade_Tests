@@ -139,7 +139,7 @@ def add_label(label, index):
 def get_label_index(label, index):
     if label not in labels:
         raise Exception('label does not exist: {0}'.format(label))
-    return labels[label] - index - 1
+    return labels[label] - index
 
 def read_instruction(string):
     global instruction_index
