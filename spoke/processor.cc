@@ -217,7 +217,7 @@ void Processor::printTrace() {
 		cerr << setw(4) << setfill('0') << hex << 0;
 	}
 	*/
-	if (log.mem_access) {
+	if (log.mem_access & !log.lors) {
 		cerr << setw(1) << hex << !log.lors;
 		cerr << setw(4) << setfill('0') << hex << log.addr;
 		cerr << setw(4) << setfill('0') << hex << log.mem_val;
@@ -242,6 +242,7 @@ void Processor::printTrace() {
  void Processor::step(bool trace) {
  	Instr ins = instr_mem[PC];
  	log.pc = PC;
+ 	bool good = true;
  	cout << "Instr ";
  	if (match_MOVS(ins)) {
  		cout << "MOVS" << endl;
@@ -485,6 +486,7 @@ void Processor::printTrace() {
   	} else if (match_B(ins)) {
   		reg_t imm11 = get_bits(ins, 0, 11);
 		cout << "B" << endl;
+		good = false;
   		int16_t imm = static_cast<int16_t>(imm11);
   		imm = imm << (XLEN - 11);
   		imm = imm >> (XLEN - 11); // sign extension
@@ -501,7 +503,7 @@ void Processor::printTrace() {
   		imm = imm >> (XLEN - 6); // sign extension
   		imm6 = static_cast<reg_t>(imm);
   		
-  		setReg(14, PC + 2);
+  		setReg(14, PC + 1);
   		PC = PC + imm6 - 1;
   		log_imm(imm6);
  	} else if (match_BX(ins)) {
@@ -510,6 +512,7 @@ void Processor::printTrace() {
  		reg_t rm_val = getReg(rm);
  		PC = rm_val - 1;
  	} else if (match_NOOP(ins)){
+ 		good = false;
  		cout << "NOOP" << endl;
  	} else if (match_BCOND(ins)) {
  		cout << "BCOND" << endl;
@@ -549,9 +552,10 @@ void Processor::printTrace() {
  		exit(1);
  	}
  	PC = PC + 1;
- 	if (trace)
+ 	if (trace && good)
  		printTrace();
- 	printLog();
+ 	if (good)
+ 		printLog();
  }
 
 reg_t Processor::add(reg_t op1, reg_t op2) {
