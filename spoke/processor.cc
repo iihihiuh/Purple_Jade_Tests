@@ -382,9 +382,10 @@ void Processor::printTrace() {
  		reg_t res = rd_val << rm_val;
 
 		//
+ 		C = get_bits(rd_val, (XLEN - rm_val), 1);
 
- 		C = ((rd_val << (rm_val - 1)) & 0x80) >> (XLEN - 1);
-
+ 		if (rd_val == 0 | rm_val > 16)
+ 			C = false;
  		//
 
 		setReg(rd, res);
@@ -413,11 +414,12 @@ void Processor::printTrace() {
  		reg_t rm_val = getReg(rm);		
 
  		int16_t rd_sval = static_cast<int16_t>(rd_val);
+ 		int16_t old_s = rd_sval;
  		rd_sval = rd_sval >> rm_val;
  		reg_t res = static_cast<reg_t>(rd_sval);
 		//
 
- 		C = (rd_sval >> (rm_val - 1)) & 0x1;
+ 		C = (old_s >> (rm_val - 1)) & 0x1;
 
  		//
 		setReg(rd, res);
