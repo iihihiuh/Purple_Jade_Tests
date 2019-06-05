@@ -7,14 +7,19 @@
 ##### This project also contains assembly tests to verify correctness of hardware implementations of ARMv6-M Thumb ISA. Moreover, it also provides many untility functions in C++, which make contributing to this test suite eaiser.
 ##### It is highly encouraged to contribute to this test suite. As more tests are added, hardware tested by this test suite will become more robust.
 #### 3. Additonal Supported instructions
-##### In addition to required instructions by class. This simulator extends support for unsigned multiplication and divison.
+##### In addition to required instructions by class. This simulator extends support for unsigned multiplication and division.
 Binary Encoding|Flag|ASM|Description
 ---|---|---|---
-0100000101 rm(3 bits) rd (3 bits)| - | MULU Rd, Rd, Rn | Rd = $unsigned(Rd) * $unsigned(Rn)
-0100000110 rm(3 bits) rd (3 bits)| - | DIVU Rd, Rd, Rn | Rd = $unsigned(Rd) / $unsigned(Rn)
+0100000101 rm(3 bits) rd (3 bits)| Not Set | MULU Rd, Rd, Rn | Rd = $unsigned(Rd) * $unsigned(Rn)
+0100000110 rm(3 bits) rd (3 bits)| Not Set | DIVU Rd, Rd, Rn | Rd = $unsigned(Rd) / $unsigned(Rn)
 ##### Exceptions are not raised during if divided by zero.
 ## Folder directory
-
+Folder Name | Subdirectory|Description
+---|---|---
+spoke||contains source files for simulator spoke
+test||
+|asm|contains some hand written asm tests
+|src|contains sources files to generate asm tests
 ## Build
 ##### To Generate Tests run:
 ```
