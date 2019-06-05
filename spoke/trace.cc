@@ -4,6 +4,7 @@
 
 using namespace std;
 
+// customed trace print fucntion for trace replay
 void Processor::printTrace() {
 	cerr << setw(4) << setfill('0') << hex << log.pc;
 

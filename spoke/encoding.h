@@ -36,6 +36,13 @@ INSTR_MATCH(BL,0xFFC0,0x4500)
 INSTR_MATCH(BX,0xFF87,0x4700)
 INSTR_MATCH(BCOND,0xF000,0xD000)
 INSTR_MATCH(NOOP,0xFFFF,0xBF00)
+// define additional instruction here
+// INSTR_MATCH(instruction_name,instruction,instruction_mask,instruction_match)
+// this macro is used to help you determined type of instructions. 
+// eg : instruction movs is 0b00101xxxxxxxxxxx
+//      instruction mask for movs will be 0b1111100000000000 -> 0xF800
+//      instruction match for movs will be 0b0010100000000000 -> 0x2000
+
 
 #define EQ 0x0
 #define NE 0x1

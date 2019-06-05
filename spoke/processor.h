@@ -36,23 +36,20 @@ typedef struct {
 } log_t;
 
 class Processor { 
- public:
+  public:
  	Processor();
  	~Processor();
 	// flags
  	bool N, Z, C, V;
 
  	reg_t getReg(reg_t);
- 	void setReg(reg_t, reg_t);
  	void load_program(std::string, reg_t);
  	void start(bool);
  	void step(bool);
  	reg_t getMem(reg_t addr);
- 	void setMem(reg_t addr, reg_t val);
  	void printLog();
 
-
-private:
+  private:
 	log_t log;
  	reg_t* regfile;
  	reg_t* data_mem;
@@ -61,6 +58,9 @@ private:
  	uint64_t inst_num;
 
  	// private functions
+ 	void setReg(reg_t, reg_t);
+ 	void setMem(reg_t addr, reg_t val);
+
  	// set and log flags
  	void setFlagNZ(reg_t val);
 	// loging imm
