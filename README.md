@@ -60,7 +60,7 @@ C|N|Z|V
 #### This trace `00051000700f00000000000` means instruction at pc 0x0005 writes to register 7 a value of 0x00f0.
 #### This trace `001c00000000010003fdf04` means instruction at pc 0x001c writes to memory 0x3 a value of 0xfdf0 and only N flag is set.
 ## Customized Trace
-### In file `spoke/trace.cc`, you can modify function `print_trace()` to change the trace format that fits you the best. There are many additional more information logged during instruction simulation that can be to into traces like memory read and immediates used. Please refer to `log_t` in `spoke/processor.h` for more information.
+#### In file `spoke/trace.cc`, you can modify function `print_trace()` to change the trace format that fits you the best. There are many additional more information logged during instruction simulation that can be to into traces like memory read and immediates used. Please refer to `log_t` in `spoke/processor.h` for more information.
 ## How to extend simulator to customized instructions
 ### 1. Add instruction encoding information in `spoke/encoding.h`
 ##### Use macro `INSTR_MATCH` to define customized instruction encoding format. This macro is used to help you determined instruction types.
