@@ -2,12 +2,13 @@
 ## General
 ##### This project contains an ARMv6-M Thumb Instruction Simulator `Spoke` and corresponding tests.
 #### 1. Spoke
-##### Spoke is an ARMv6-M Thumb Instruction Simulator, which reads in instruction streams and outputs expected outputs for every instruction. Every hardware implementation of ARMv6-M Thumb ISA should be able to produce the exact same output of this simulator to be deemed as correct.
+Spoke is an ARMv6-M Thumb Instruction Simulator, which reads in instruction streams and outputs expected outputs for every instruction. Every hardware implementation of ARMv6-M Thumb ISA should be able to produce the exact same output of this simulator to be deemed as correct.
 #### 2. Test Suite
-##### This project also contains assembly tests to verify correctness of hardware implementations of ARMv6-M Thumb ISA. Moreover, it provides many untility functions in C++, which make contributing to this test suite eaiser.
-##### It is highly encouraged to contribute to this test suite. As more tests are added, hardware tested by this test suite will become more robust.
+This project also contains assembly tests to verify correctness of hardware implementations of ARMv6-M Thumb ISA. Moreover, it provides many untility functions in C++, which make contributing to this test suite eaiser.
+
+It is highly encouraged to contribute to this test suite. As more tests are added, hardware tested by this test suite will become more robust.
 #### 3. Additonal Supported instructions
-##### In addition to required instructions by class. This simulator extends support for unsigned multiplication and division.
+In addition to required instructions by class. This simulator extends support for unsigned multiplication and division.
 Binary Encoding|Flag|ASM|Description
 ---|---|---|---
 0100000101 rm(3 bits) rd (3 bits)| Not Set | MULU Rd, Rd, Rn | Rd = $unsigned(Rd) * $unsigned(Rn)
